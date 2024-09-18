@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1Wq7EnEW_muyN1womWFKJxMKp7xS1DJNy
 """
 
-!pip install pyspark
+pip install pyspark
 
 from pyspark.sql import SparkSession
 
