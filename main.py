@@ -14,9 +14,24 @@ from pyspark.sql import SparkSession
 # Create a SparkSession
 spark = SparkSession.builder.appName("Urban_Air_Quality_Analysis").getOrCreate()
 
-# Read CSV file into DataFrame
-csv_file_path = "/content/drive/MyDrive/Urban Air Quality and Health Impact Dataset.csv"
+import gdown
+
+# Google Drive file ID
+file_id = "1LMnNSW3w2L1A9IooTK8ZRo3UkbRsosgt"
+output = "Urban_Air_Quality_Dataset.csv"
+
+# Download CSV file from Google Drive
+gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
+
+# Load the CSV into DataFrame
+csv_file_path = "Urban_Air_Quality_Dataset.csv"
 df = spark.read.csv(csv_file_path, header=True)
+
+# Proceed with the rest of your PySpark code
+
+# # Read CSV file into DataFrame
+# csv_file_path = "/content/drive/MyDrive/Urban Air Quality and Health Impact Dataset.csv"
+# df = spark.read.csv(csv_file_path, header=True)
 
 df.head(5)
 
