@@ -1,15 +1,24 @@
-# Use an official Python runtime as a parent image
-FROM python:3.8-slim
+# Base image
+FROM openjdk:8-jdk-slim
 
-# Install Python dependencies
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r /app/requirements.txt
+# Install Python and necessary packages
+RUN apt-get update && apt-get install -y python3 python3-pip
 
-# Set the working directory
-WORKDIR /app
+# Install PySpark
+RUN pip3 install pyspark
 
-# Copy the PySpark script or notebook into the Docker container
-COPY . /app
+# Set environment variables for PySpark
+ENV PYSPARK_PYTHON=python3
+ENV PYSPARK_DRIVER_PYTHON=python3
 
-# Default command to start Jupyter Notebook
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+# Copy requirements.txt if needed
+COPY requirements.txt .
+
+# Install dependencies from requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Copy your Python script into the container
+COPY main.py .
+
+# Set the default command to run the Python script
+CMD ["python3", "main.py"]
