@@ -85,6 +85,7 @@ def summary(df):
     })
 
     # Print or display the summary table
+    print("reaching 1")
     print(summary_df)
 
 # Run the summary function on the PySpark DataFrame
@@ -191,6 +192,7 @@ columns_to_keep = [col + "_index" for col in categorical_columns] + [c for c in 
 df_final = df_indexed.select(columns_to_keep)
 
 # Show the resulting DataFrame
+print("reaching 2")
 df_final.show(5)
 
 df_numeric = df_final
@@ -279,7 +281,7 @@ else:
 # # Step 11: Print model summary
 # training_summary = lr_model.summary
 # print(f"R-squared on Training Set: {training_summary.r2}")
-
+print("reaching 3")
 from pyspark.ml.feature import VectorAssembler, MinMaxScaler
 from pyspark.ml.regression import LinearRegression
 from pyspark.ml.evaluation import RegressionEvaluator
