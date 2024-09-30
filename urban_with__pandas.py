@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import plotly.offline as pyo
 import plotly.io as pio
+import gdown
 
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
