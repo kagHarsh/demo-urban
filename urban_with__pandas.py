@@ -25,6 +25,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import mean_squared_error, r2_score
+from IPython.display import display
 
 
 import warnings
