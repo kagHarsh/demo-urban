@@ -40,7 +40,7 @@ gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
 
 # Load the CSV into DataFrame
 csv_file_path = "Urban_Air_Quality_Dataset.csv"
-df = pd.read.csv(csv_file_path, header=True)
+df = pd.read_csv(csv_file_path, header=True)
 
 df.head()
 
