@@ -30,7 +30,16 @@ import warnings
 warnings.filterwarnings('ignore')
 
 #Read data from a csv file
-df = pd.read_csv('/content/drive/MyDrive/Urban Air Quality and Health Impact Dataset.csv')
+# Google Drive file ID
+file_id = "1LMnNSW3w2L1A9IooTK8ZRo3UkbRsosgt"
+output = "Urban_Air_Quality_Dataset.csv"
+
+# Download CSV file from Google Drive
+gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
+
+# Load the CSV into DataFrame
+csv_file_path = "Urban_Air_Quality_Dataset.csv"
+df = pd.read.csv(csv_file_path, header=True)
 
 df.head()
 
