@@ -446,12 +446,12 @@ print(f"Standard deviation of R-squared scores for Linear Regression: {cv_scores
 # print(f"Mean R-squared score for SVM: {cv_scores.mean()}")
 # print(f"Standard deviation of R-squared scores for SVM: {cv_scores.std()}")
 
-# Perform cross-validation linear regression
-cv_scores = cross_val_score(best_dt, X, y, cv=5, scoring='r2')
+# Perform cross-validation DT
+# cv_scores = cross_val_score(best_dt, X, y, cv=5, scoring='r2')
 
-print(f"Cross-validation R-squared scores for Decision Tree: {cv_scores}")
-print(f"Mean R-squared score for Decision Tree: {cv_scores.mean()}")
-print(f"Standard deviation of R-squared scores for Decision Tree: {cv_scores.std()}")
+# print(f"Cross-validation R-squared scores for Decision Tree: {cv_scores}")
+# print(f"Mean R-squared score for Decision Tree: {cv_scores.mean()}")
+# print(f"Standard deviation of R-squared scores for Decision Tree: {cv_scores.std()}")
 
 # Assuming y_test contains the actual values and y_pred contains the predicted values
 # Get the first 5 predictions along with their actual values
