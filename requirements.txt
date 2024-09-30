@@ -2,5 +2,4 @@ pyspark
 matplotlib
 pandas
 seaborn
-jupyter
 gdown
