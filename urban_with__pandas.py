@@ -211,37 +211,37 @@ X_train = scaler.fit_transform(X_train)
 
 X_test = scaler.transform(X_test)
 
-import pickle
-pickle.dump(scaler,open('scaling.pkl','wb'))
+# import pickle
+# pickle.dump(scaler,open('scaling.pkl','wb'))
 
 #Random Forest
 
 # Define model
-rf = RandomForestRegressor()
+# rf = RandomForestRegressor()
 
-# Define parameter grid
-param_grid = {
-    'n_estimators': [100, 200, 300],
-    'max_depth': [None, 10, 20, 30],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4]
-}
+# # Define parameter grid
+# param_grid = {
+#     'n_estimators': [100, 200, 300],
+#     'max_depth': [None, 10, 20, 30],
+#     'min_samples_split': [2, 5, 10],
+#     'min_samples_leaf': [1, 2, 4]
+# }
 
-# Perform grid search
-grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, cv=3, n_jobs=-1, verbose=2)
-grid_search.fit(X_train, y_train)
+# # Perform grid search
+# grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, cv=3, n_jobs=-1, verbose=2)
+# grid_search.fit(X_train, y_train)
 
-# Make predictions
-best_rf = grid_search.best_estimator_
-y_pred_rf = best_rf.predict(X_test)
+# # Make predictions
+# best_rf = grid_search.best_estimator_
+# y_pred_rf = best_rf.predict(X_test)
 
-# Evaluate the model
-mse_rf = mean_squared_error(y_test, y_pred_rf)
-r2_rf = r2_score(y_test, y_pred_rf)
+# # Evaluate the model
+# mse_rf = mean_squared_error(y_test, y_pred_rf)
+# r2_rf = r2_score(y_test, y_pred_rf)
 
-print(f"Best Parameters for random forest: {grid_search.best_params_}")
-print(f"Mean Squared Error for random forest: {mse_rf}")
-print(f"R-squared for random forest: {r2_rf}")
+# print(f"Best Parameters for random forest: {grid_search.best_params_}")
+# print(f"Mean Squared Error for random forest: {mse_rf}")
+# print(f"R-squared for random forest: {r2_rf}")
 
 #Linear Regression
 from sklearn.linear_model import LinearRegression
@@ -280,90 +280,90 @@ print(f"Mean Squared Error for Linear Regression: {mse_lr}")
 print(f"R-squared for Linear Regression: {r2_lr}")
 
 #SVM
-from sklearn.svm import SVR
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import mean_squared_error, r2_score
+# from sklearn.svm import SVR
+# from sklearn.model_selection import GridSearchCV
+# from sklearn.metrics import mean_squared_error, r2_score
 
-# Initialize the SVM model
-svm = SVR()
+# # Initialize the SVM model
+# svm = SVR()
 
-# Define the parameter grid for hyperparameter tuning
-param_grid = {
-    'C': [0.1, 1, 10, 100],
-    'kernel': ['linear', 'rbf', 'poly'],  # Testing different kernel functions
-    'degree': [2, 3, 4],  # Only used if kernel is 'poly'
-    'gamma': ['scale', 'auto'],  # Kernel coefficient for 'rbf', 'poly'
-}
+# # Define the parameter grid for hyperparameter tuning
+# param_grid = {
+#     'C': [0.1, 1, 10, 100],
+#     'kernel': ['linear', 'rbf', 'poly'],  # Testing different kernel functions
+#     'degree': [2, 3, 4],  # Only used if kernel is 'poly'
+#     'gamma': ['scale', 'auto'],  # Kernel coefficient for 'rbf', 'poly'
+# }
 
-# Perform grid search with cross-validation
-grid_search = GridSearchCV(estimator=svm, param_grid=param_grid, cv=3, n_jobs=-1, verbose=2)
-grid_search.fit(X_train, y_train)
+# # Perform grid search with cross-validation
+# grid_search = GridSearchCV(estimator=svm, param_grid=param_grid, cv=3, n_jobs=-1, verbose=2)
+# grid_search.fit(X_train, y_train)
 
-# Get the best estimator (SVM model with the best hyperparameters)
-best_svm = grid_search.best_estimator_
+# # Get the best estimator (SVM model with the best hyperparameters)
+# best_svm = grid_search.best_estimator_
 
-# Make predictions on the test set
-y_pred_svm = best_svm.predict(X_test)
+# # Make predictions on the test set
+# y_pred_svm = best_svm.predict(X_test)
 
-# Evaluate the model performance
-mse_svm = mean_squared_error(y_test, y_pred_svm)
-r2_svm = r2_score(y_test, y_pred_svm)
+# # Evaluate the model performance
+# mse_svm = mean_squared_error(y_test, y_pred_svm)
+# r2_svm = r2_score(y_test, y_pred_svm)
 
-# Print the best hyperparameters and evaluation metrics
-print(f"Best Parameters for SVM: {grid_search.best_params_}")
-print(f"Mean Squared Error (MSE) for SVM: {mse_svm}")
-print(f"R-squared (R²) for SVM: {r2_svm}")
+# # Print the best hyperparameters and evaluation metrics
+# print(f"Best Parameters for SVM: {grid_search.best_params_}")
+# print(f"Mean Squared Error (MSE) for SVM: {mse_svm}")
+# print(f"R-squared (R²) for SVM: {r2_svm}")
 
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import mean_squared_error, r2_score
+# from sklearn.tree import DecisionTreeRegressor
+# from sklearn.model_selection import GridSearchCV
+# from sklearn.metrics import mean_squared_error, r2_score
 
-# Define the Decision Tree model
-dt = DecisionTreeRegressor()
+# # Define the Decision Tree model
+# dt = DecisionTreeRegressor()
 
-# Define parameter grid for tuning
-param_grid = {
-    'max_depth': [None, 10, 20, 30],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4],
-    'max_features': [None, 'auto', 'sqrt', 'log2']
-}
+# # Define parameter grid for tuning
+# param_grid = {
+#     'max_depth': [None, 10, 20, 30],
+#     'min_samples_split': [2, 5, 10],
+#     'min_samples_leaf': [1, 2, 4],
+#     'max_features': [None, 'auto', 'sqrt', 'log2']
+# }
 
-# Perform grid search
-grid_search_dt = GridSearchCV(estimator=dt, param_grid=param_grid, cv=3, n_jobs=-1, verbose=2)
-grid_search_dt.fit(X_train, y_train)
+# # Perform grid search
+# grid_search_dt = GridSearchCV(estimator=dt, param_grid=param_grid, cv=3, n_jobs=-1, verbose=2)
+# grid_search_dt.fit(X_train, y_train)
 
-# Make predictions using the best estimator from grid search
-best_dt = grid_search_dt.best_estimator_
-y_pred_dt = best_dt.predict(X_test)
+# # Make predictions using the best estimator from grid search
+# best_dt = grid_search_dt.best_estimator_
+# y_pred_dt = best_dt.predict(X_test)
 
-# Evaluate the model
-mse_dt = mean_squared_error(y_test, y_pred_dt)
-r2_dt = r2_score(y_test, y_pred_dt)
+# # Evaluate the model
+# mse_dt = mean_squared_error(y_test, y_pred_dt)
+# r2_dt = r2_score(y_test, y_pred_dt)
 
-print(f"Best Parameters for Decision Tree: {grid_search_dt.best_params_}")
-print(f"Mean Squared Error for Decision Tree: {mse_dt}")
-print(f"R-squared for Decision Tree: {r2_dt}")
+# print(f"Best Parameters for Decision Tree: {grid_search_dt.best_params_}")
+# print(f"Mean Squared Error for Decision Tree: {mse_dt}")
+# print(f"R-squared for Decision Tree: {r2_dt}")
 
-# Calculate residuals
-residuals = y_test - y_pred_rf
+# # Calculate residuals
+# residuals = y_test - y_pred_rf
 
-# Plot residuals
-plt.figure(figsize=(12, 6))
-sns.histplot(residuals, kde=True, bins=30)
-plt.title('Distribution of Residuals using Random Forest')
-plt.xlabel('Residual')
-plt.ylabel('Frequency')
-plt.show()
+# # Plot residuals
+# plt.figure(figsize=(12, 6))
+# sns.histplot(residuals, kde=True, bins=30)
+# plt.title('Distribution of Residuals using Random Forest')
+# plt.xlabel('Residual')
+# plt.ylabel('Frequency')
+# plt.show()
 
-# Plot actual vs predicted values
-plt.figure(figsize=(12, 6))
-plt.scatter(y_test, y_pred_rf, alpha=0.3)
-plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], '--r', linewidth=2)
-plt.xlabel('Actual')
-plt.ylabel('Predicted')
-plt.title('Actual vs Predicted Values using Random Forest')
-plt.show()
+# # Plot actual vs predicted values
+# plt.figure(figsize=(12, 6))
+# plt.scatter(y_test, y_pred_rf, alpha=0.3)
+# plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], '--r', linewidth=2)
+# plt.xlabel('Actual')
+# plt.ylabel('Predicted')
+# plt.title('Actual vs Predicted Values using Random Forest')
+# plt.show()
 
 # Calculate residuals for linear regression
 residuals = y_test - y_pred_lr
@@ -386,44 +386,44 @@ plt.title('Actual vs Predicted Values using Linear Regression')
 plt.show()
 
 # Calculate residuals for SVM
-residuals = y_test - y_pred_svm
+# residuals = y_test - y_pred_svm
 
-# Plot residuals
-plt.figure(figsize=(12, 6))
-sns.histplot(residuals, kde=True, bins=30)
-plt.title('Distribution of Residuals using SVM')
-plt.xlabel('Residual')
-plt.ylabel('Frequency')
-plt.show()
+# # Plot residuals
+# plt.figure(figsize=(12, 6))
+# sns.histplot(residuals, kde=True, bins=30)
+# plt.title('Distribution of Residuals using SVM')
+# plt.xlabel('Residual')
+# plt.ylabel('Frequency')
+# plt.show()
 
-# Plot actual vs predicted values
-plt.figure(figsize=(12, 6))
-plt.scatter(y_test, y_pred_svm, alpha=0.3)
-plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], '--r', linewidth=2)
-plt.xlabel('Actual')
-plt.ylabel('Predicted')
-plt.title('Actual vs Predicted Values using SVM')
-plt.show()
+# # Plot actual vs predicted values
+# plt.figure(figsize=(12, 6))
+# plt.scatter(y_test, y_pred_svm, alpha=0.3)
+# plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], '--r', linewidth=2)
+# plt.xlabel('Actual')
+# plt.ylabel('Predicted')
+# plt.title('Actual vs Predicted Values using SVM')
+# plt.show()
 
-# Calculate residuals for DT
-residuals = y_test - y_pred_dt
+# # Calculate residuals for DT
+# residuals = y_test - y_pred_dt
 
-# Plot residuals
-plt.figure(figsize=(12, 6))
-sns.histplot(residuals, kde=True, bins=30)
-plt.title('Distribution of Residuals using Decision Tree')
-plt.xlabel('Residual')
-plt.ylabel('Frequency')
-plt.show()
+# # Plot residuals
+# plt.figure(figsize=(12, 6))
+# sns.histplot(residuals, kde=True, bins=30)
+# plt.title('Distribution of Residuals using Decision Tree')
+# plt.xlabel('Residual')
+# plt.ylabel('Frequency')
+# plt.show()
 
-# Plot actual vs predicted values
-plt.figure(figsize=(12, 6))
-plt.scatter(y_test, y_pred_dt, alpha=0.3)
-plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], '--r', linewidth=2)
-plt.xlabel('Actual')
-plt.ylabel('Predicted')
-plt.title('Actual vs Predicted Values using Decision Tret')
-plt.show()
+# # Plot actual vs predicted values
+# plt.figure(figsize=(12, 6))
+# plt.scatter(y_test, y_pred_dt, alpha=0.3)
+# plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], '--r', linewidth=2)
+# plt.xlabel('Actual')
+# plt.ylabel('Predicted')
+# plt.title('Actual vs Predicted Values using Decision Tret')
+# plt.show()
 
 # Perform cross-validation linear regression
 cv_scores = cross_val_score(best_lr, X, y, cv=5, scoring='r2')
@@ -433,18 +433,18 @@ print(f"Mean R-squared score for Linear Regression: {cv_scores.mean()}")
 print(f"Standard deviation of R-squared scores for Linear Regression: {cv_scores.std()}")
 
 # Perform cross-validation random forest
-cv_scores = cross_val_score(best_rf, X, y, cv=5, scoring='r2')
+# cv_scores = cross_val_score(best_rf, X, y, cv=5, scoring='r2')
 
-print(f"Cross-validation R-squared scores for Random Forest: {cv_scores}")
-print(f"Mean R-squared score for Random Forest: {cv_scores.mean()}")
-print(f"Standard deviation of R-squared scores for Random Forest: {cv_scores.std()}")
+# print(f"Cross-validation R-squared scores for Random Forest: {cv_scores}")
+# print(f"Mean R-squared score for Random Forest: {cv_scores.mean()}")
+# print(f"Standard deviation of R-squared scores for Random Forest: {cv_scores.std()}")
 
-# Perform cross-validation SVM
-cv_scores = cross_val_score(best_svm, X, y, cv=5, scoring='r2')
+# # Perform cross-validation SVM
+# cv_scores = cross_val_score(best_svm, X, y, cv=5, scoring='r2')
 
-print(f"Cross-validation R-squared scores for SVM: {cv_scores}")
-print(f"Mean R-squared score for SVM: {cv_scores.mean()}")
-print(f"Standard deviation of R-squared scores for SVM: {cv_scores.std()}")
+# print(f"Cross-validation R-squared scores for SVM: {cv_scores}")
+# print(f"Mean R-squared score for SVM: {cv_scores.mean()}")
+# print(f"Standard deviation of R-squared scores for SVM: {cv_scores.std()}")
 
 # Perform cross-validation linear regression
 cv_scores = cross_val_score(best_dt, X, y, cv=5, scoring='r2')
@@ -463,13 +463,13 @@ comparison_df = pd.DataFrame({
 # Display the first 5 rows of the comparison table
 print(comparison_df.head(5))
 
-import pickle
+# import pickle
 
-pickle.dump(best_lr,open('regmodel.pkl','wb'))
+# pickle.dump(best_lr,open('regmodel.pkl','wb'))
 
-pickled_model=pickle.load(open('regmodel.pkl','rb'))
+# pickled_model=pickle.load(open('regmodel.pkl','rb'))
 
-feature_columns = df.columns[:-1]
+# feature_columns = df.columns[:-1]
 
-## Prediction
-pickled_model.predict(scaler.transform(df[feature_columns].iloc[0].values.reshape(1, -1)))
+# ## Prediction
+# pickled_model.predict(scaler.transform(df[feature_columns].iloc[0].values.reshape(1, -1)))
